@@ -32,25 +32,3 @@ The "id" parameter will differ based on the endpoint being used. The id paramete
 The "columns" parameter will pull the entire dataset as long as the last part of the endpoint's name is written. For example, writing "Balance" in this parameter will pull the entire balance. If you wish to pull only specific columns, then refer to the dictionary called "uniqueIDs.json" on our GitHub page, and input unique identifiers in the columns parameter, separated by commas, to pull only the columns of data you desire.
 
 Each user is currently limited to 1500 API calls per month. However, the rate limit can be reset or modified upon request. Please reach out to Rapidan Energy Group for access to an API key.
-
-{% seo %} {% include head-custom.html %}
-{{ site.title | default: site.github.repository_name }}
-{% if site.logo %} Logo {% endif %}
-{{ site.description | default: site.github.project_tagline }}
-
-{% if site.github.is_project_page %}
-View the Project on GitHub {{ site.github.repository_nwo }}
-
-{% endif %} {% if site.github.is_user_page %}
-View My GitHub Profile
-
-{% endif %} {% if site.show_downloads %}
-Download ZIP File
-Download TAR Ball
-View On GitHub
-{% endif %}
-{{ content }}
-{% if site.github.is_project_page %}
-This project is maintained by Rapidan Energy Group
-
-{% endif %}

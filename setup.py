@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='RapidanAPI',
-    version='1.0.0a4',
+    version='1.0.1',
     packages=find_packages(),
     description='RapidanAPI allows Rapidan Energy Group\'s clients to conveniently pull energy data.',
     long_description=open('README.md').read(),

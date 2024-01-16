@@ -1,6 +1,6 @@
-# RapidanAPI allows Rapidan's clients to conveniently pull energy data.
+# RapidanAPI allows our clients to conveniently pull energy data.
 
-The RapidanAPI module and its dependencies can be installed with "pip install RapidanAPI".
+The RapidanAPI package can be installed with "pip install RapidanAPI"
 
 Once this package is installed, various Rapidan datasets can be accessed with just a few lines of code and an API key. By changing the "endpoints" and "parameters", you can modify which dataset and columns of data will be pulled by your python script.
 
@@ -8,7 +8,7 @@ Once this package is installed, various Rapidan datasets can be accessed with ju
 {% highlight python %}
 from RapidanAPI import global_oil_balance
 
-# The API key, balance ID, and columns to return
+# API key, balance ID, and columns are passed as parameters
 api_key = "RAPIDAN_API_KEY"
 balance_id = "2311"
 columns = "Balance"
@@ -16,7 +16,7 @@ columns = "Balance"
 # Get the data
 df = global_oil_balance(api_key, balance_id, columns)
 
-# Now df is a pandas DataFrame containing the data
+# df is a pandas DataFrame containing the data
 print(df)
 
 # Output a csv file

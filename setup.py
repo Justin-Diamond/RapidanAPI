@@ -5,7 +5,7 @@ setup(
     version='1.0.2',
     packages=find_packages(),
     description='RapidanAPI allows Rapidan Energy Group\'s clients to conveniently pull energy data.',
-    long_description=open('README.md').read(),
+    long_description=open('README_PYPI.md').read(),
     install_requires=[
         'requests',
         'pandas',

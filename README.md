@@ -9,12 +9,12 @@ Once this package is installed, various Rapidan datasets can be accessed with ju
 from RapidanAPI import global_oil_balance
 
 # API key, balance ID, and columns are passed as parameters
-api_key = "RAPIDAN_API_KEY"
+rapidan_api_key = "RAPIDAN_rapidan_api_key"
 balance_id = "2306"
 columns = "Balance"
 
 # Get the data
-df = global_oil_balance(api_key, balance_id, columns)
+df = global_oil_balance(rapidan_api_key, balance_id, columns)
 
 # df is a pandas DataFrame containing the data
 print(df)
@@ -50,24 +50,26 @@ This code outputs the following dataframe:
 19           4Q24                47.386866  ...         96.000000              4.000000
 {% endhighlight %}
 
-Endpoints will each have 3 parameters: api_key, id, and columns. The "tail" of endpoints such as "global_oil_balance" and "energy_calendar" refers to the last word in the endpoint. For example, the "tail" of "global_oil_balance" is just "balance".
+Endpoints have at most 3 parameters: rapidan_rapidan_api_key, date, and columns. The "tail" of endpoints such as "global_oil_balance" and "energy_calendar" refers to the last word in the endpoint. For example, the "tail" of "global_oil_balance" is just "balance".
 
-# API key parameter
-The "api_key" parameter contains your api_key, which can be set as a secret variable.
+# API key parameter (The "Who")
+The "rapidan_rapidan_api_key" parameter contains your api key, which is used to identify you as a leigitmate user and can be set as a secret variable.
 
-# ID parameter
-The first part of the "id" parameter's name is the tail of the endpoint being used. For example, the id parameter's name for the "global_oil_balance" endpoint is "balance_id".
+Endpoints like "energy_calendar" ONLY have this parameter, meaning the current, entire calendar is always pulled.
+
+# Date parameter (The "When")
+This parameter changes the date of the data,
+
+The first part of the "date" parameter's name is the tail of the endpoint being used. For example, the date parameter's name for the "global_oil_balance" endpoint is "balance_date".
 
 If this parameter is set to be "Current", the most up-to-date dataset will always be pulled. To get older versions of Rapidan datasets, this parameter should be set as a 4 digit number reflecting the year and month of the historical data being pulled. For example, setting the id parameter as 2307 will pull data from July 2023, and setting it as 2401 will pull data from January 2024.
 
-Endpoints like "energy_calendar" do not have this parameter, so the current calendar is always pulled.
+# Columns parameter (The "What")
+This parameter affects what columns will be pulled from the dataset.
 
-# Columns parameter
-When the "columns" parameter is set as the "tail" for the endpoint, the entire dataset will be pulled. For example, when the "global_oil_balance" endpoint" is used, setting this parameter as "balance" will pull the entire balance. To pull specific columns of data, this parameter can be set as a unique identifier, or as multiple unique IDs separated by commas. For example, the parameter can be set as "OECD_CONS, OECD_SUPP" to pull only the OECD consumption and supply from our global oil balance.
+When the "columns" parameter is set as the "tail" for the endpoint, the entire dataset will be pulled. For example, when the "global_oil_balance" endpoint" is used, setting this parameter as "balance" will pull the entire balance. To pull specific columns of data, this parameter can be set with a unique identifier, or multiple unique IDs separated by commas. For example, the parameter can be set as "OECD_CONS, OECD_SUPP" to pull only the OECD consumption and supply from our global oil balance.
 
 Please refer to the dictionary called "uniqueIDs.json" on our GitHub page to see which identifiers correspond to different columns of data. 
-
-Endpoints like "energy_calendar" do not have this parameter, so the whole calendar is pulled.
 
 # Rate limits and obtaining API keys
 Each user is currently limited to 1500 API calls per month. However, the rate limit can be reset or modified upon request. Please reach out to Rapidan Energy Group for access to an API key.

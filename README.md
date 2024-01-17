@@ -1,9 +1,9 @@
 # RapidanAPI: Insights made convenient.
-Welcome to Rapidan's v1.0 API! We hope this tool will help our clients automatically ingest the data and forecasts we work hard to create each day. 
+Welcome to RapidanAPI! We hope this tool will help our clients automatically ingest the data and forecasts we work hard to create each day.
 
 We're confident in the value that our weekly calendars, monthly balances, and other datasets provide – and we know that lots of good people depend on them. That's why we've made it our mission to get each packet of energy market wisdom into your hands as conveniently and quickly as possible.
 
-Right now, RapidanAPI is in its early stages of development, but we plan on regularly expanding the number of endpoints and datasets that are available. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
+Right now, RapidanAPI is in its earliest stage of development, but we plan on regularly expanding the number of endpoints and datasets that are available. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
 
 # Getting started with RapidanAPI
 The RapidanAPI package can be installed with "pip install RapidanAPI".

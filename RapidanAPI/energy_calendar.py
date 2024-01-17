@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 
-def get_data(api_key):
+def get_ec_data(api_key):
     url = f"https://rapidan-api-sabineleffler.replit.app/get_data/{api_key}"
     response = requests.get(url)
 

@@ -1,6 +1,7 @@
-# RapidanAPI:
-# Insights made convenient.
-Welcome to Rapidan's v1.0 API! We hope this tool will help clients like you automatically ingest the data and forecasts we work so hard to create each day. Although Rapidan produces a lower volume of data than big agencies like the EIA – we're confident in the value that our weekly calendars, monthly balances, and other datasets provide. That's why we made it our mission to get each packet of wisdom into YOUR hands as conveniently and quickly as possible – no matter how small. 
+# RapidanAPI: Insights made convenient.
+Welcome to Rapidan's v1.0 API! We hope this tool will help our clients automatically ingest the data and forecasts we work so hard to create each day. Rapidan may produce a lower volume of data than big agencies like the EIA – but that's because we place _our_ confidence in high-density information and carefully-developed insights. 
+
+Our weekly calendars, monthly balances, and other datasets may be small, but we know that lots of good people depend on them. That's why we've made it our mission to get each packet of energy market wisdom into your hands as conveniently and quickly as possible.
 
 Right now, RapidanAPI is in its early stages of development, but we plan on regularly expanding the number of endpoints and datasets that are available. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
 
@@ -148,7 +149,7 @@ Here is a list of unique IDs which correspond to different columns of data in ou
 </div>
 
 # Data releases
-Now that you're familiar with the API, you're probably wondering when to run these scripts. If you're automating them, it's important to know which dates to run them on. **The weekly energy calendar is updated on Friday evening each week** (which gives API users a 2.5 day headstart on calendar access), and the global oil balance will be updated per the following publication schedule:
+Now that you're familiar with the API, you're probably wondering when to run these scripts. If you're automating them, it's important to know which dates to run them on. **The weekly energy calendar is updated on Friday evening each week** (which gives API users a 2.5 day headstart on calendar access), and the **global oil balance will be updated per the following publication schedule:**
 
 - Monday, January 22, 2024
 

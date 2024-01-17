@@ -23,6 +23,33 @@ print(df)
 df.to_csv("output.csv")
 {% endhighlight %}
 
+This code outputs the following dataframe:
+
+{% seo %} {% include head-custom.html %}
+{% highlight python %}
+   Quarter (2311)  OECD Consumption (mb/d)  ...  WTI Forecast ($)  Brent-WTI Spread ($)
+0            1Q20                45.484306  ...            48.000                 4.000
+1            2Q20                37.531423  ...            31.000                 4.000
+2            3Q20                42.295335  ...            40.890                 2.020
+3            4Q20                42.956560  ...            42.690                 2.570
+4            1Q21                42.573695  ...            58.140                 3.180
+5            2Q21                44.070292  ...            66.100                 1.980
+6            3Q21                45.789515  ...            70.500                 2.730
+7            4Q21                46.904131  ...            77.100                 2.560
+8            1Q22                45.767426  ...            95.000                 2.900
+9            2Q22                45.277626  ...           105.520                 6.450
+10           3Q22                46.218934  ...            91.430                 6.270
+11           4Q22                45.783839  ...            82.640                 5.990
+12           1Q23                45.457402  ...            75.980                 6.180
+13           2Q23                45.709023  ...            73.670                 4.050
+14           3Q23                46.009247  ...            82.217                 3.703
+15           4Q23                46.129017  ...            84.000                 5.000
+16           1Q24                45.812430  ...            85.000                 5.000
+17           2Q24                45.567691  ...            86.000                 4.000
+18           3Q24                46.128759  ...            83.000                 4.000
+19           4Q24                46.394244  ...            85.000                 4.000
+{% endhighlight %}
+
 Endpoints will each have 3 parameters: api_key, id, and columns. The "tail" of endpoints such as "global_oil_balance" and "energy_calendar" refers to the last word in the endpoint. For example, the "tail" of "global_oil_balance" is just "balance".
 
 # API key parameter

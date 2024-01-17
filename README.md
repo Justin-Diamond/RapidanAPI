@@ -149,15 +149,28 @@ Here is a list of unique IDs which correspond to different columns of data in ou
 # Data releases
 Now that you're familiar with the API, you're probably wondering when to run these scripts. If you're automating them, it's important to know which dates to run them on. The weekly energy calendar should be update on Friday evening each week (which gives API users a 2.5 day headstart on calendar access!), and the global oil balance will be updated per the following publication schedule:
 <div style="font-size: 8px;">
+   
 - Monday, January 22, 2024
+
 - Tuesday, February 20, 2024
+
 - Monday, March 18, 2024
+
 - Monday, April 15, 2024
+
 - Friday, May 17, 2024
+
 - Friday, June 14, 2024
+
 - Monday, July 15, 2024
+
 - Thursday, August 15, 2024
+
 - Monday, September 16, 2024
+
 - Thursday, October 17, 2024
+
 - Monday, November 18, 2024
+
 - Monday, December 16, 2024
+</div>

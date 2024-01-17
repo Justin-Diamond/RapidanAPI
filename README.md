@@ -1,5 +1,5 @@
 # RapidanAPI: Insights made convenient.
-Welcome to RapidanAPI! We hope this tool will help our clients automatically process the data and forecasts we work so hard to create each day. We're confident in the value that our weekly calendars, monthly balances, and other datasets provide – and we know that lots of good people depend on them. That's why we've made it our mission to get each packet of energy market wisdom into your hands as conveniently and quickly as possible.
+Welcome to RapidanAPI! We hope this tool will help our clients automatically process the data and forecasts we work so hard to create each day. We're confident in the value that our weekly calendars, monthly balances, and other datasets provide – and we know that lots of good people depend on them. That's why we've made it our mission to get as much energy market wisdom into your hands as conveniently and quickly as possible.
 
 Right now, RapidanAPI is in the early stages of development, but we plan on regularly expanding the number of endpoints and datasets that are available. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
 

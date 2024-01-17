@@ -2,16 +2,16 @@
 
 The RapidanAPI package can be installed with "pip install RapidanAPI".
 
-Once this package is installed, various Rapidan datasets can be accessed with just a few lines of code and an API key. By changing the "endpoints" and "parameters", you can modify which dataset and columns of data will be pulled by your python script.
+Once this package is installed, various Rapidan datasets can be accessed with just a few lines of code and an API key. By changing the "endpoints" and "parameters", you can modify the datasets and columns that are being pulled by your python script – which should look something like this:
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}
 from RapidanAPI import global_oil_balance
 
 # API key, balance ID, and columns are passed as parameters
-rapidan_api_key = "RAPIDAN_rapidan_api_key"
+rapidan_api_key = "RAPIDAN_API_KEY"
 balance_id = "2306"
-columns = "Balance"
+columns = "All"
 
 # Get the data
 df = global_oil_balance(rapidan_api_key, balance_id, columns)
@@ -23,7 +23,7 @@ print(df)
 df.to_csv("output.csv")
 {% endhighlight %}
 
-This code outputs the following dataframe:
+This outputs the following table, which can be saved to a .csv, .xls, or other file:
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}
@@ -50,26 +50,92 @@ This code outputs the following dataframe:
 19           4Q24                47.386866  ...         96.000000              4.000000
 {% endhighlight %}
 
-Endpoints have at most 3 parameters: rapidan_rapidan_api_key, date, and columns. The "tail" of endpoints such as "global_oil_balance" and "energy_calendar" refers to the last word in the endpoint. For example, the "tail" of "global_oil_balance" is just "balance".
+Endpoints have at most 3 parameters: rapidan_api_key, date, and columns.
 
 # API key parameter (The "Who")
-The "rapidan_rapidan_api_key" parameter contains your api key, which is used to identify you as a leigitmate user and can be set as a secret variable.
+The "rapidan_api_key" parameter contains your api key, which is used to identify you as a leigitmate user and can be set as a secret variable.
 
-Endpoints like "energy_calendar" ONLY have this parameter, meaning the current, entire calendar is always pulled.
+Endpoints like "energy_calendar" ONLY require this parameter, since all calendar pulls yield the most current & complete calendar available, by default. Here's an example of how you can pull energy calendar data using only this parameter:
+
+{% seo %} {% include head-custom.html %}
+{% highlight python %}
+from RapidanAPI import energy_calendar
+
+# API key is passed as a parameter
+rapidan_api_key = "RAPIDAN_API_KEY"
+
+# Get the data
+df = energy_calendar(rapidan_api_key)
+
+# df is a pandas DataFrame containing the calendar
+print(df)
+
+# Output a csv file
+df.to_csv("calendar.csv")
+{% endhighlight %}
+
+Each api key is currently limited to 1500 API calls per month. However, the rate limit can be reset or modified upon request. Please reach out to Rapidan Energy Group for access to an API key.
 
 # Date parameter (The "When")
-This parameter changes the date of the data,
+The "date" parameter's name will depend on the last word of the endpoint being used. For example, the date parameter's name for the "global_oil_balance" endpoint is "balance_date".
 
-The first part of the "date" parameter's name is the tail of the endpoint being used. For example, the date parameter's name for the "global_oil_balance" endpoint is "balance_date".
-
-If this parameter is set to be "Current", the most up-to-date dataset will always be pulled. To get older versions of Rapidan datasets, this parameter should be set as a 4 digit number reflecting the year and month of the historical data being pulled. For example, setting the id parameter as 2307 will pull data from July 2023, and setting it as 2401 will pull data from January 2024.
+If this parameter is set to "Current", the most up-to-date dataset available will be pulled. To get older versions of Rapidan datasets, this parameter should be set as a 4 digit number reflecting the year and month of the historical data being pulled (YYMM). For example, setting the date parameter as 2307 will pull data from July 2023, and setting it as 2401 will pull data from January 2024.
 
 # Columns parameter (The "What")
-This parameter affects what columns will be pulled from the dataset.
+When the "columns" parameter is set to "All" for this endpoint, the entire dataset will be pulled. To pull specific columns of data, this parameter can be set to a unique identifier, or multiple unique IDs separated by commas. For example, the parameter can be set as "OECD_CONS, OECD_SUPP" to pull only the OECD consumption and supply from our global oil balance.
 
-When the "columns" parameter is set as the "tail" for the endpoint, the entire dataset will be pulled. For example, when the "global_oil_balance" endpoint" is used, setting this parameter as "balance" will pull the entire balance. To pull specific columns of data, this parameter can be set with a unique identifier, or multiple unique IDs separated by commas. For example, the parameter can be set as "OECD_CONS, OECD_SUPP" to pull only the OECD consumption and supply from our global oil balance.
+Here is a list of unique IDs which correspond to different columns of data in our global oil balance:
 
-Please refer to the dictionary called "uniqueIDs.json" on our GitHub page to see which identifiers correspond to different columns of data. 
-
-# Rate limits and obtaining API keys
-Each user is currently limited to 1500 API calls per month. However, the rate limit can be reset or modified upon request. Please reach out to Rapidan Energy Group for access to an API key.
+{% seo %} {% include head-custom.html %}
+{% highlight json %}
+{
+    "OECD_CONS": "OECD Consumption (mb/d)",
+    "OECD_USA_CONS": "United States Consumption (mb/d)",
+    "OECD_JAP_CONS": "Japan Consumption (mb/d)",
+    "OECD_CAN_CONS": "Canada Consumption (mb/d)",
+    "OECD_EUR_CONS": "Europe Consumption (mb/d)",
+    "OECD_OTH_CONS": "Other OECD Consumption (mb/d)",
+    "NONOECD_CONS": "Non-OECD Consumption (mb/d)",
+    "NONOECD_CHN_CONS": "China Consumption (mb/d)",
+    "NONOECD_IND_CONS": "India Consumption (mb/d)",
+    "NONOECD_BRA_CONS": "Brazil Consumption (mb/d)",
+    "NONOECD_RUS_CONS": "Russia Consumption (mb/d)",
+    "NONOECD_OTH_CONS": "Other Non-OECD Consumption (mb/d)",
+    "TOT_CONS": "Total World Consumption",
+    "OECD_SUPP": "OECD Supply (mb/d)",
+    "OECD_USA_SUPP_TL": "U.S. Total Liquids Supply (mb/d)",
+    "OECD_USA_SUPP_CR": "Crude Supply (mb/d)",
+    "OECD_USA_SUPP_CR_LOW48": "Lower 48 Supply (mb/d)",
+    "OECD_USA_SUPP_CR_GOM": "GOM Supply (mb/d)",
+    "OECD_USA_SUPP_CR_AL": "Alaska Supply (mb/d)",
+    "OECD_USA_SUPP_NGL": "NGLs Supply (mb/d)",
+    "OECD_USA_SUPP_OL": "Other US Liquids Supply (mb/d)",
+    "OECD_MEX_SUPP": "Mexico Supply (mb/d)",
+    "OECD_CAN_SUPP": "Canada Supply (mb/d)",
+    "OECD_OTH_SUPP": "Other OECD Supply (mb/d)",
+    "NONOECD_SUPP": "Non-OECD Supply (mb/d)",
+    "NONOECD_BRA_SUPP": "Brazil Supply (mb/d)",
+    "NONOECD_CHN_SUPP": "China Supply (mb/d)",
+    "NONOECD_RUS_SUPP": "Russia Supply (mb/d)",
+    "NONOECD_RUS_SUPP_CR": "Russia Crude Supply (mb/d)",
+    "NONOECD_OTH_SUPP": "Other Non-OECD Supply (mb/d)",
+    "NONOPEC_SUPP": "Non-OPEC Supply Supply (mb/d)",
+    "OPEC_SUPP": "OPEC Supply (mb/d)",
+    "OPEC_SUPP_CR": "Crude Oil Portion Supply (mb/d)",
+    "OPEC_SUPP_OL": "Other Liquids Supply (mb/d)",
+    "TOT_SUPP": "Total World Supply (mb/d)",
+    "SURPLUS": "Implied Surplus (mb/d)",
+    "OECD_IND_STK_CHNG": "OECD Industry Stock Change (mb/d)",
+    "OECD_USA_IND_STK_CHNG": "US Industry Stocks (Ex. SPR) (mb/d)",
+    "OECD_OTH_IND_STK_CHNG": "Other OECD Industry Stocks (mb/d)",
+    "OTH_STK_CHNG": "Other Stock Change* (mb/d)",
+    "NONOECD_CHN_STK_CHNG": "Chinese Crude Stocks (mb/d)",
+    "OECD_SPR_STK_CHNG": "OECD SPR (mb/d)",
+    "TOT_OOW_CHNG": "Oil on Water (mb/d)",
+    "NONOECD_OTH_STK_CHNG": "Other Non-OECD Stocks (mb/d)",
+    "OPEC_SPARECAP": "OPEC Spare Capacity (mb/d)",
+    "BRENT_PRICE": "Brent Forecast ($)",
+    "WTI_PRICE": "WTI Forecast ($)",
+    "BRENT_WTI_SPREAD": "Brent-WTI Spread ($)"
+}
+{% endhighlight %}

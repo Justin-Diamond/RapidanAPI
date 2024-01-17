@@ -9,4 +9,4 @@ def get_gob_data(api_key, balance_id, columns):
         data = response.json()
         return pd.DataFrame(data)
     else:
-        raise Exception("Failed to fetch data")
+        raise Exception("Failed to fetch data.")

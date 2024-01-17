@@ -1,5 +1,9 @@
-# RapidanAPI allows our clients to conveniently pull energy data.
+# RapidanAPI: Insights made convenient.
+Welcome to Rapidan's v1.0 API! We hope this tool will help clients like you automatically ingest the data and forecasts we work so hard to create each day. Although Rapidan produces a lower volume of data than agencies like the EIA – we're confident in the value that our weekly calendars, monthly balances, and other datasets provide. That's why we made it our mission to get each packet of wisdom into YOUR hands as conveniently and quickly as possible – no matter how small. 
 
+Right now, RapidanAPI is in its early stages of development, but we plan on regularly expanding the number of endpoints and datasets that are available. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
+
+# Getting started with RapidanAPI
 The RapidanAPI package can be installed with "pip install RapidanAPI".
 
 Once this package is installed, various Rapidan datasets can be accessed with just a few lines of code and an API key. By changing the "endpoints" and "parameters", you can modify the datasets and columns that are being pulled by your python script – which should look something like this:
@@ -23,7 +27,7 @@ print(df)
 df.to_csv("output.csv")
 {% endhighlight %}
 
-This outputs the following table, which can be saved to a .csv, .xls, or other file:
+This outputs a table that can be saved as a .csv, .xls, or other file:
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}

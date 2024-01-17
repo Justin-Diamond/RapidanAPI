@@ -58,7 +58,7 @@ The "api_key" parameter contains your api_key, which can be set as a secret vari
 # ID parameter
 The first part of the "id" parameter's name is the tail of the endpoint being used. For example, the id parameter's name for the "global_oil_balance" endpoint is "balance_id", and for the "energy_calendar" endpoint is "calendar_id". 
 
-If this parameter is left empty, the most up-to-date dataset will always be pulled. To get older versions of Rapidan datasets, this parameter should be set as a 4 digit number reflecting the year and month of the historical data being pulled. For example, setting the id parameter as 2307 will pull data from July 2023, and setting it as 2401 will pull data from January 2024.
+If this parameter is set to be "Current", the most up-to-date dataset will always be pulled. To get older versions of Rapidan datasets, this parameter should be set as a 4 digit number reflecting the year and month of the historical data being pulled. For example, setting the id parameter as 2307 will pull data from July 2023, and setting it as 2401 will pull data from January 2024.
 
 # Columns parameter
 When the "columns" parameter is set as the "tail" for the endpoint, the entire dataset will be pulled. For example, when the "global_oil_balance" endpoint" is used, setting this parameter as "balance" will pull the entire balance. To pull specific columns of data, this parameter can be set as a unique identifier, or as multiple unique IDs separated by commas. For example, the parameter can be set as "OECD_CONS, OECD_SUPP" to pull only the OECD consumption and supply from our global oil balance.

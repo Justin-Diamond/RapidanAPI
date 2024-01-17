@@ -30,7 +30,7 @@ df.to_csv("output.csv")
 This outputs a table that can be saved as a .csv, .xls, or other file:
 
 {% seo %} {% include head-custom.html %}
-{% highlight python %}
+{% highlight html %}
    Quarter (2306)  OECD Consumption (mb/d)  ...  WTI Forecast ($)  Brent-WTI Spread ($)
 0            1Q20                45.501849  ...         48.000000              4.000000
 1            2Q20                37.501710  ...         31.000000              4.000000

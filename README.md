@@ -147,7 +147,9 @@ Here is a list of unique IDs which correspond to different columns of data in ou
 </div>
 
 # Data releases
-Now that you're familiar with the API, you're probably wondering when to run these scripts. If you're automating them, it's important to know which dates to run them on. **The weekly energy calendar is updated on Friday evening each week** (which gives API users a 2.5 day headstart on calendar access), and the **global oil balance will be updated per the following publication schedule:**
+Now that you're familiar with the API, you're probably wondering when to run these scripts. If you're automating them, it's important to know which dates to run them on. 
+
+The weekly energy calendar is updated on Friday evening each week (which gives API users a 2.5 day headstart on calendar access), and the global oil balance will be updated per the following publication schedule:
 
 - Monday, January 22, 2024
 

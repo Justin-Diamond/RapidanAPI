@@ -17,18 +17,24 @@ jobs:
         python-version: 3.10
         auto-update-conda: true
 
-    - name: Update Conda and Install Dependencies
-      run: |
-        conda update -n base -c defaults conda --yes
-        conda config --set auto_activate_base false
-        conda env update --file environment.yml --name base || (conda env update --file environment.yml --name base --debug && exit 1)
-      env:
-        CONDA_NO_PLUGINS: true
-
-    - name: Verify installation
+    - name: Debug Conda Installation
       run: |
         conda info
         conda list
+        conda update -n base -c defaults conda --yes
+
+    - name: Update Conda Environment
+      run: |
+        conda env update --file environment.yml --name base --debug || (conda env update --file environment.yml --name base --debug && exit 1)
+      env:
+        CONDA_NO_PLUGINS: true
+
+    - name: Verify Installation
+      run: |
+        conda info
+        conda list
+        conda env list
+        conda activate base
 
     - name: Lint with flake8
       run: |

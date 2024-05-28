@@ -17,19 +17,46 @@ jobs:
 
     - name: Debug Conda Installation
       run: |
+        echo "Conda Info:"
         conda info
+        echo "Conda List:"
         conda list
+        echo "Updating Conda:"
         conda update -n base -c defaults conda --yes
 
-    - name: Update Conda Environment
+    - name: Create Conda Environment
       run: |
-        conda env update --file environment.yml --name base --debug || (conda env update --file environment.yml --name base --debug && exit 1)
+        echo "Creating Conda Environment from environment.yml"
+        conda env create --file environment.yml --name test_env || (echo "Retrying with debug..." && conda env create --file environment.yml --name test_env --debug && exit 1)
       env:
         CONDA_NO_PLUGINS: true
 
     - name: Verify Installation
       run: |
+        echo "Verifying Conda Environment"
         conda info
         conda list
         conda env list
-        conda activate base
+        conda activate test_env
+
+    - name: Lint with flake8
+      run: |
+        conda activate test_env
+        conda install flake8 --yes
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Test with pytest
+      run: |
+        conda activate test_env
+        conda install pytest --yes
+        pytest
+
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: |
+        conda activate test_env
+        python setup.py sdist bdist_wheel
+        twine upload dist/*

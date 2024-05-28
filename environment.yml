@@ -1,5 +1,3 @@
-conda env update --file environment.yml --name test_env
-
 name: base
 channels:
   - defaults

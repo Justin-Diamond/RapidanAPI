@@ -21,7 +21,7 @@ jobs:
       run: |
         conda update -n base -c defaults conda --yes
         conda config --set auto_activate_base false
-        conda env update --file environment.yml --name base || conda env update --file environment.yml --name base --debug
+        conda env update --file environment.yml --name base || (conda env update --file environment.yml --name base --debug && exit 1)
       env:
         CONDA_NO_PLUGINS: true
 

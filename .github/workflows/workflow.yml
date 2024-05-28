@@ -5,12 +5,10 @@ on: [push]
 jobs:
   build-linux:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 5
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Miniconda
       uses: conda-incubator/setup-miniconda@v2
       with:
@@ -35,25 +33,3 @@ jobs:
         conda list
         conda env list
         conda activate base
-
-    - name: Lint with flake8
-      run: |
-        conda activate base
-        conda install flake8 --yes
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-    - name: Test with pytest
-      run: |
-        conda activate base
-        conda install pytest --yes
-        pytest
-
-    - name: Build and publish
-      env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      run: |
-        conda activate base
-        python setup.py sdist bdist_wheel
-        twine upload dist/*

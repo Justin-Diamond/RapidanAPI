@@ -49,5 +49,5 @@ async def get_data_async(api_keys, api_key: str, balance_date: str, columns: str
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
 
-def get_data(api_keys, api_key: str, balance_date: str, columns: str):
+def global_oil_balance(api_keys, api_key: str, balance_date: str, columns: str):
     return asyncio.run(get_data_async(api_keys, api_key, balance_date, columns))

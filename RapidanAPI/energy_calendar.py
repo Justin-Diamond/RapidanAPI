@@ -17,5 +17,6 @@ async def get_data_async(api_key: str):
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
 
-def get_data(api_key: str):
-    return asyncio.run(get_data_async(api_key))
+# Function for getting energy calendar data
+async def get_data(api_key: str):
+    return await get_data_async(api_key)

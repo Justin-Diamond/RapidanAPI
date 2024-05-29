@@ -4,8 +4,8 @@ from fastapi import HTTPException
 import asyncio
 from .utils import check_api_key
 
-async def get_data_async(api_keys, api_key: str):
-    check_api_key(api_keys, api_key, "energy_calendar")
+async def get_data_async(api_key: str):
+    check_api_key(api_key, "energy_calendar")
 
     csv_file_path = 'calendar.csv'
 
@@ -17,6 +17,5 @@ async def get_data_async(api_keys, api_key: str):
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
 
-# Define a new function name for calling the asynchronous function
-def energy_calendar(api_keys, api_key: str):
-    return asyncio.run(get_data_async(api_keys, api_key))
+def get_data(api_key: str):
+    return asyncio.run(get_data_async(api_key))

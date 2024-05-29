@@ -2,7 +2,6 @@ flake8
 asyncio
 httpx
 pytest
-replit
 requests
 pandas
 twine

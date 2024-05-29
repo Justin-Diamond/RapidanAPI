@@ -1,12 +1,8 @@
-import requests
-import pandas as pd
+import httpx
 
-def energy_calendar(api_key):
+async def energy_calendar(api_key):
     url = f"https://rapidan-api-sabineleffler.replit.app/calendar/{api_key}"
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        data = response.json()
-        return pd.DataFrame(data)
-    else:
-        raise Exception("Failed to fetch data.")
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url)
+    response.raise_for_status()  # Ensure we raise an exception for HTTP errors
+    return response.json()

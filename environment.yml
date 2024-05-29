@@ -6,6 +6,7 @@ dependencies:
   - asyncio
   - flake8
   - httpx
+  - replit
   - pytest
   - pip
   - requests

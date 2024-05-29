@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from fastapi import HTTPException
 import asyncio
-from main import check_api_key, load_api_keys
+from utils import check_api_key
 
 async def get_data_async(api_key: str):
     check_api_key(api_key, "energy_calendar")

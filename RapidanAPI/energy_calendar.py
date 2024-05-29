@@ -6,3 +6,4 @@ async def energy_calendar(api_key):
         response = await client.get(url)
     response.raise_for_status()  # Ensure we raise an exception for HTTP errors
     return response.json()
+

@@ -3,8 +3,9 @@ import json
 import os
 from datetime import datetime
 from fastapi import HTTPException
+import asyncio
 
-async def get_data(balance_date: str, columns: str):
+async def get_data_async(balance_date: str, columns: str):
     datetime_now = datetime.now()
 
     if balance_date.lower() == "current":
@@ -44,3 +45,6 @@ async def get_data(balance_date: str, columns: str):
         return df
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
+
+def get_data(balance_date: str, columns: str):
+    return asyncio.run(get_data_async(balance_date, columns))

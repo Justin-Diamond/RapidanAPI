@@ -2,14 +2,6 @@ import json
 from datetime import datetime
 from fastapi import HTTPException
 
-def load_api_keys():
-    with open('api_keys.json', 'r+') as keys_file:
-        return json.load(keys_file)
-
-def update_api_keys(api_keys):
-    with open('api_keys.json', 'w') as keys_file:
-        json.dump(api_keys, keys_file)
-
 def check_api_key(key, endpoint):
     api_keys = load_api_keys()
 

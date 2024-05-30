@@ -1,10 +1,9 @@
 import pandas as pd
 import numpy as np
 from fastapi import HTTPException
-import asyncio
 from .utils import check_api_key
 
-async def get_data_async(api_key: str):
+def get_data(api_key: str):
     check_api_key(api_key, "energy_calendar")
 
     csv_file_path = 'calendar.csv'
@@ -16,6 +15,3 @@ async def get_data_async(api_key: str):
         return df
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
-
-def get_data(api_key: str):
-    return asyncio.run(get_data_async(api_key))

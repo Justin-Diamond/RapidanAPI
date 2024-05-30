@@ -3,8 +3,6 @@ import json
 import os
 from datetime import datetime
 from fastapi import HTTPException
-import asyncio
-from .utils import check_api_key
 
 async def get_data_async(api_key: str, balance_date: str, columns: str):
     check_api_key(api_key, "global_oil_balance")
@@ -23,7 +21,7 @@ async def get_data_async(api_key: str, balance_date: str, columns: str):
                 break
 
             current_month -= 1
-            if (current_month == 0):
+            if current_month == 0:
                 current_month = 12
                 current_year -= 1
     else:
@@ -49,6 +47,5 @@ async def get_data_async(api_key: str, balance_date: str, columns: str):
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
 
-# Function for getting global oil balance data
-async def get_data(api_key: str, balance_date: str, columns: str):
-    return await get_data_async(api_key, balance_date, columns)
+def get_data(api_key: str, balance_date: str, columns: str):
+    return asyncio.run(get_data_async(api_key, balance_date, columns))

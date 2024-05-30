@@ -4,7 +4,9 @@ from fastapi import HTTPException
 from .utils import check_api_key
 
 def get_data(api_key: str):
-    check_api_key(api_key, "energy_calendar")
+    api_keys = load_api_keys()  # Load API keys
+
+    check_api_key(api_keys, api_key, "energy_calendar")
 
     csv_file_path = 'calendar.csv'
 
@@ -15,3 +17,7 @@ def get_data(api_key: str):
         return df
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
+
+def load_api_keys():
+    with open('api_keys.json') as f:
+        return json.load(f)

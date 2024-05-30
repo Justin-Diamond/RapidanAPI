@@ -23,7 +23,7 @@ async def get_data_async(api_key: str, balance_date: str, columns: str):
                 break
 
             current_month -= 1
-            if current_month == 0:
+            if (current_month == 0):
                 current_month = 12
                 current_year -= 1
     else:

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from fastapi import HTTPException
+import json
 from .utils import check_api_key
 
 def get_data(api_key: str):

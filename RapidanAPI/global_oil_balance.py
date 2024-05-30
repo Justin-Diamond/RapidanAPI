@@ -3,6 +3,7 @@ import json
 import os
 from datetime import datetime
 from fastapi import HTTPException
+import asyncio
 from .utils import check_api_key
 
 async def get_data_async(api_key: str, balance_date: str, columns: str):

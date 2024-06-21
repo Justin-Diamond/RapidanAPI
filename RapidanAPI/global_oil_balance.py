@@ -44,3 +44,7 @@ def get_data(api_key: str, balance_date: str, columns: str):
         return df
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
+
+# Make the module callable
+def __call__(api_key: str, balance_date: str, columns: str):
+    return get_data(api_key, balance_date, columns)

@@ -1,4 +1,5 @@
 flake8
+fastapi
 asyncio
 httpx
 pytest

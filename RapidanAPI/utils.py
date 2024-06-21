@@ -1,6 +1,13 @@
 import json
 from datetime import datetime
 from fastapi import HTTPException
+from replit.object_storage import Client
+
+client = Client()
+
+def load_api_keys():
+    api_keys_text = client.download_as_text('api_keys.json')
+    return json.loads(api_keys_text)
 
 def check_api_key(api_keys, key, endpoint):
     if key not in api_keys:

@@ -12,3 +12,7 @@ def get_data(api_key: str):
         return df
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
+
+# Make the module callable
+def __call__(api_key: str):
+    return get_data(api_key)

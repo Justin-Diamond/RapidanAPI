@@ -3,6 +3,7 @@ channels:
   - defaults
 dependencies:
   - python=3.10
+  - fastapi
   - asyncio
   - flake8
   - httpx

@@ -1,4 +1,4 @@
-name: Python Package using Conda
+name: Python Package using pip
 
 on: [push, pull_request]
 
@@ -9,35 +9,28 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Miniforge
-      uses: conda-incubator/setup-miniforge@v2
+    - name: Set up Python
+      uses: actions/setup-python@v3
       with:
-        python-version: 3.10
-        environment-file: environment.yml
-        activate-environment: base
+        python-version: '3.10'
 
-    - name: Debug Conda Environment
+    - name: Install dependencies
       run: |
-        echo "Conda environment details:"
-        conda info
-        conda list
-        conda env list
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Verify installation
       run: |
-        conda activate base
         python -m pip --version
         pip list
 
     - name: Lint with flake8
       run: |
-        conda activate base
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
     - name: Test with pytest
       run: |
-        conda activate base
         pytest
 
     - name: Build and publish
@@ -46,6 +39,5 @@ jobs:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
-        conda activate base
         python setup.py sdist bdist_wheel
         twine upload dist/*

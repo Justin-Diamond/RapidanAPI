@@ -1,6 +1,0 @@
-requests
-pandas
-twine
-wheel
-flake8
-pytest

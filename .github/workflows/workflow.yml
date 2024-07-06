@@ -16,6 +16,10 @@ jobs:
         environment-file: environment.yml
         activate-environment: base
 
+    - name: Install dependencies
+      run: |
+        conda env update --file environment.yml --name base
+
     - name: Verify installation
       run: |
         conda activate base

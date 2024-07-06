@@ -1,6 +1,6 @@
-name: Python Package using pip
+name: Python Package using Conda
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build-linux:
@@ -9,42 +9,36 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v2
       with:
-        python-version: '3.10'
-
-    - name: Create virtual environment
-      run: python -m venv venv
-
-    - name: Install dependencies
-      run: |
-        source venv/bin/activate
-        pip install --upgrade pip
-        pip install -r requirements.txt
+        python-version: 3.10
+        environment-file: environment.yml
+        activate-environment: base
 
     - name: Verify installation
       run: |
-        source venv/bin/activate
+        conda activate base
         python -m pip --version
         pip list
 
     - name: Lint with flake8
       run: |
-        source venv/bin/activate
+        conda activate base
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
     - name: Test with pytest
       run: |
-        source venv/bin/activate
+        conda activate base
         pytest
 
     - name: Build and publish
+      if: github.ref == 'refs/heads/main'
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
-        source venv/bin/activate
+        conda activate base
         python setup.py sdist bdist_wheel
         twine upload dist/*

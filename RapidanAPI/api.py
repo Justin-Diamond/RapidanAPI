@@ -36,3 +36,18 @@ def energy_calendar(api_key):
         return df
     else:
         response.raise_for_status()
+
+def refined_products_module(api_key):
+    url = f"{BASE_URL}refined_products_module"
+    headers = {
+        'x-api-key': api_key
+    }
+    
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        df = pd.DataFrame(data)
+        return df
+    else:
+        response.raise_for_status()

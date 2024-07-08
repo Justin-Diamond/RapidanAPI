@@ -13,12 +13,12 @@ Once this package is installed, various Rapidan datasets can be accessed with ju
 from RapidanAPI import global_oil_balance
 
 # API key, balance ID, and columns are passed as parameters
-rapidan_api_key = "RAPIDAN_API_KEY"
+api_key = "API_KEY"
 balance_id = "2306"
 columns = "All"
 
 # Get the data
-df = global_oil_balance(rapidan_api_key, balance_id, columns)
+df = global_oil_balance(api_key, balance_id, columns)
 
 # df is a pandas DataFrame containing the data
 print(df)
@@ -54,10 +54,10 @@ This outputs a table that can be saved as a .csv, .xls, or other file:
 19           4Q24                47.386866  ...         96.000000              4.000000
 {% endhighlight %}
 
-Endpoints have at most 3 parameters: rapidan_api_key, date, and columns.
+Endpoints have at most 3 parameters: api_key, date, and columns.
 
-# API key parameter (The "Who")
-The "rapidan_api_key" parameter contains your api key, which is used to identify you as a leigitmate user and can be set as a secret variable. You can reach out to Rapidan Energy Group at any time to inquire about API key access.
+# API key parameter
+The "api_key" parameter contains your api key, which is used to identify you as a leigitmate user and can be set as a secret variable. You can reach out to Rapidan Energy Group at any time to inquire about API key access.
 
 Endpoints like "energy_calendar" ONLY require this parameter, since all calendar pulls yield the most current & complete calendar available, by default. Here's an example of how you can pull energy calendar data using only this parameter:
 
@@ -66,10 +66,10 @@ Endpoints like "energy_calendar" ONLY require this parameter, since all calendar
 from RapidanAPI import energy_calendar
 
 # API key is passed as a parameter
-rapidan_api_key = "RAPIDAN_API_KEY"
+api_key = "API_KEY"
 
 # Get the data
-df = energy_calendar(rapidan_api_key)
+df = energy_calendar(api_key)
 
 # df is a pandas DataFrame containing the calendar
 print(df)
@@ -80,12 +80,12 @@ df.to_csv("calendar.csv")
 
 Each api key is currently limited to 1500 API calls per month. However, the rate limit can be reset or modified upon request.
 
-# Date parameter (The "When")
+# Date parameter
 The "date" parameter's name will depend on the last word of the endpoint being used. For example, the date parameter's name for the "global_oil_balance" endpoint is "balance_date".
 
 If this parameter is set to "Current", the most up-to-date dataset available will be pulled. To get older versions of Rapidan datasets, this parameter should be set as a 4 digit number reflecting the year and month of the historical data being pulled (YYMM). For example, setting the date parameter as 2307 will pull data from July 2023, and setting it as 2401 will pull data from January 2024.
 
-# Columns parameter (The "What")
+# Columns parameter
 When the "columns" parameter is set to "All" for this endpoint, the entire dataset will be pulled. To pull specific columns of data, this parameter can be set to a unique identifier, or multiple unique IDs separated by commas. For example, the parameter can be set as "OECD_CONS, OECD_SUPP" to pull only the OECD consumption and supply from our global oil balance.
 
 Here is a list of unique IDs which correspond to different columns of data in our global oil balance:

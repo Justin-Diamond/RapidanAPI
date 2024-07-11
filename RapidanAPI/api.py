@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 
-BASE_URL = "https://iue4h9npc6.execute-api.us-east-1.amazonaws.com/test/"
+BASE_URL = "https://iue4h9npc6.execute-api.us-east-1.amazonaws.com/RapidanAPI/"
 
 def global_oil_balance(api_key, balance_date, columns):
     url = f"{BASE_URL}global_oil_balance"

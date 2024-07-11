@@ -37,6 +37,51 @@ def energy_calendar(api_key):
     else:
         response.raise_for_status()
 
+def china_risk_tracker(api_key):
+    url = f"{BASE_URL}china_risk_tracker"
+    headers = {
+        'x-api-key': api_key
+    }
+    
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        df = pd.DataFrame(data)
+        return df
+    else:
+        response.raise_for_status()
+
+def us_gas_balance(api_key):
+    url = f"{BASE_URL}us_gas_balance"
+    headers = {
+        'x-api-key': api_key
+    }
+    
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        df = pd.DataFrame(data)
+        return df
+    else:
+        response.raise_for_status()
+
+def eu_gas_balance(api_key):
+    url = f"{BASE_URL}eu_gas_balance"
+    headers = {
+        'x-api-key': api_key
+    }
+    
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        df = pd.DataFrame(data)
+        return df
+    else:
+        response.raise_for_status()
+
 def refined_products_module(api_key):
     url = f"{BASE_URL}refined_products_module"
     headers = {

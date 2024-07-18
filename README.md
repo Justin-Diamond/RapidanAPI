@@ -43,6 +43,18 @@ print(df)
 df.to_csv("Energy_Calendar.csv")
 {% endhighlight %}
 
+This outputs a table that can be saved as a .csv, .xlsx, or other file:
+
+{% seo %} {% include head-custom.html %}
+{% highlight html %}
+  Stars     Date/Event                                        Description
+0    **  Month of July  Trinidad and Tobago’s Atlantic LNG (ALNG) Trai...
+1    **  Month of July  Russia’s Sakhalin II LNG undergoes scheduled m...
+2    **  Month of July  Final FERC Commissioner likely to be sworn in....
+3    **  Month of July  New Fortress Energy (NFE) intends to start LNG...
+4     *  Month of July  Nigerian Upstream Petroleum Regulatory Commiss... 
+{% endhighlight %}
+
 # Other Parameters
 For datasets like the Global Oil Balance, parameters such as “balance_date” and “columns” are included to give you extra control of the data, and allow you to retrieve historical oil balances. In the future, we plan on adding these parameters to other endpoints – such as the refined products module and gas balance endpoints.
 
@@ -69,7 +81,7 @@ print(df)
 df.to_csv("Global_Oil_Balance.csv")
 {% endhighlight %}
 
-This outputs a table that can be saved as a .csv, .xlsx, or other file:
+Which outputs the following dataframe & .csv:
 
 {% seo %} {% include head-custom.html %}
 {% highlight html %}

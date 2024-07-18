@@ -4,7 +4,7 @@ Welcome to RapidanAPI! This Python Package helps Rapidan's clients process API-a
 RapidanAPI is currently in Version 1.1.1, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
 
 # Getting started with RapidanAPI
-The easiest way to install this package is to use the package installer for Python, which enables a simple "pip" command.
+The easiest way to install this package is to use the package installer for Python, which enables a "pip" command. The tutorial for using the package installer can be found here: https://packaging.python.org/en/latest/tutorials/installing-packages/
 
 The RapidanAPI package can be installed with the command "pip install RapidanAPI" either on your own computer or in a virtual environment. Installation should only take a few seconds!
 

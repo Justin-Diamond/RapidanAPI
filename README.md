@@ -9,7 +9,7 @@ The easiest way to install this package is to use the package installer for Pyth
 The RapidanAPI package can be installed with the command "pip install RapidanAPI" either on your own computer or in a virtual environment. Installation should only take a few seconds!
 
 # Available Endpoints
-Once this package is installed, you can access most datasets with a few lines of code and an API key – but endpoints like the Global Oil Balance have some extra parameters as well. Here is a list of endpoints and their parameters:
+Once this package is installed, you can access most datasets with a few lines of code and an API key – but endpoints like the Global Oil Balance have some extra parameters. Here is a list of endpoints and their parameters:
 
 {% seo %} {% include head-custom.html %}
 {% highlight html %}

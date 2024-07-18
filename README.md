@@ -11,13 +11,17 @@ The RapidanAPI package can be installed with the command "pip install RapidanAPI
 # Available Endpoints
 Once this package is installed, you can access most datasets with a few lines of code and an API key – but endpoints like the Global Oil Balance have some extra parameters as well. Here is a list of endpoints and their parameters:
 
+{% seo %} {% include head-custom.html %}
+{% highlight html %}
 Endpoint : Parameters
-   global_oil_balance : api_key, balance_date, columns
-   refined_products_module : api_key
-   china_risk_tracker : api_key
-   energy_calendar : api_key
-   us_gas_balance : api_key
-   eu_gas_balance : api_key
+
+global_oil_balance : api_key, balance_date, columns
+refined_products_module : api_key
+china_risk_tracker : api_key
+energy_calendar : api_key
+us_gas_balance : api_key
+eu_gas_balance : api_key
+{% endhighlight %}
 
 # API Keys
 The "api_key" parameter contains your api key, which is used to identify you as a legitimate user and should be set as a secret variable. The default usage plan allows each key to make up to 3000 requests per month. You can reach out to Rapidan at any time to inquire about API key access. Endpoints which only require the API key parameter will always pulls the most current & complete version of the dataset. Here's how you can pull energy calendar data using only the “api_key” parameter:

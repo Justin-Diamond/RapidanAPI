@@ -201,7 +201,7 @@ plt.savefig("EU_Gas_Balance_Chart.png", dpi=300)
 plt.show()
 {% endhighlight %}
 
-This outputs the following .png file:
+This outputs the following chart as a .png file:
 ![Rapidan_EU_Gas_Balance](https://github.com/user-attachments/assets/5045e14d-cde9-41d8-a5e1-7ab27d549f64)
 
 # Global Oil Balance Column Codes

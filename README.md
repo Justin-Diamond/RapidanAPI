@@ -31,7 +31,7 @@ The "api_key" parameter contains your api key, which is used to identify you as 
 from RapidanAPI import energy_calendar
 
 # API key is passed as a parameter
-api_key = "API_KEY"
+api_key = "YOUR_API_KEY"
 
 # Get the data
 df = energy_calendar(api_key)
@@ -67,7 +67,7 @@ The “columns” parameter lets you pull specific columns of data. If you want 
 from RapidanAPI import global_oil_balance
 
 # API key, balance ID, and columns are passed as parameters
-api_key = "API_KEY"
+api_key = "YOUR_API_KEY"
 balance_id = "2306"
 columns = "All"
 

@@ -1,4 +1,6 @@
+![Anniversary Banner](https://github.com/user-attachments/assets/d194dd94-c2b9-4def-82fc-233f81796aa5)
 # RapidanAPI: Insights made convenient.
+
 Welcome to RapidanAPI! This Python Package helps Rapidan's clients process API-accessible data and forecasts as conveniently as possible.
 
 RapidanAPI is currently in Version 1.1.1, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.

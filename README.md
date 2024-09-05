@@ -60,7 +60,7 @@ This outputs a table that can be saved as a .csv, .xlsx, or other file:
 # Other Parameters
 For datasets like the Global Oil Balance, parameters such as “balance_date” and “columns” are included to give you extra control of the data, and allow you to retrieve historical oil balances. In the future, we plan on adding these parameters to other endpoints – such as the refined products module and gas balance endpoints.
 
-The “balance_date” parameter is in YYMM format, and includes our historical oil balances from 2301 (January 2023) to present. For example, setting the date parameter as 2307 will pull data from July 2023, and setting it as 2401 will pull data from January 2024. If you want to pull the most recently updated dataset, just set this parameter as balance_date="Current" or balance_date=None.
+The “balance_date” parameter is in YYMM format, and includes our historical oil balances from 2401 (January 2024) to present. For example, setting the date parameter as 2401 will pull data from January 2024, and setting it as 2407 will pull data from July 2024. If you want to pull the most recently updated dataset, just set this parameter as balance_date="Current" or balance_date=None.
 
 The “columns” parameter lets you pull specific columns of data. If you want to pull the entire dataset, just set this parameter as columns="All" or columns=None. But if you want to pull specific columns, just enter one or more of the column codes listed at the bottom of this page as comma separated values. For example, columns=“OECD_CONS, OECD_SUPP” will pull OECD consumption and OECD supply. Here’s how you can pull all of the columns from our June 2023 global oil balance:
 
@@ -70,7 +70,7 @@ from RapidanAPI import global_oil_balance
 
 # API key, balance ID, and columns are passed as parameters
 api_key = "YOUR_API_KEY"
-balance_id = "2306"
+balance_id = "2408"
 columns = "All"
 
 # Get the data
@@ -83,31 +83,19 @@ print(df)
 df.to_csv("Global_Oil_Balance.csv")
 {% endhighlight %}
 
-Which outputs the following dataframe & .csv:
+Which outputs a dataframe & .csv that looks like this:
 
 {% seo %} {% include head-custom.html %}
 {% highlight html %}
    Quarter (2306)  OECD Consumption (mb/d)  ...  WTI Forecast ($)  Brent-WTI Spread ($)
-0            1Q20                45.501849  ...         48.000000              4.000000
-1            2Q20                37.501710  ...         31.000000              4.000000
-2            3Q20                42.238852  ...         40.890000              2.020000
-3            4Q20                42.901522  ...         42.690000              2.570000
-4            1Q21                42.512663  ...         58.140000              3.180000
-5            2Q21                44.030264  ...         66.100000              1.980000
-6            3Q21                45.742705  ...         70.500000              2.730000
-7            4Q21                46.854999  ...         77.100000              2.560000
-8            1Q22                45.838050  ...         95.000000              2.900000
-9            2Q22                45.404778  ...        105.520000              6.450000
-10           3Q22                46.622823  ...         91.430000              6.270000
-11           4Q22                45.936485  ...         82.640000              5.990000
-12           1Q23                45.211192  ...         75.980000              6.180000
-13           2Q23                45.598498  ...         74.303148              3.983519
-14           3Q23                47.041830  ...         86.000000              4.000000
-15           4Q23                46.922884  ...         92.000000              5.000000
-16           1Q24                46.572982  ...         85.000000              5.000000
-17           2Q24                46.488073  ...         86.000000              4.000000
-18           3Q24                47.367586  ...         91.000000              4.000000
-19           4Q24                47.386866  ...         96.000000              4.000000
+0            1Q23                45.211192  ...         75.980000              6.180000
+1            2Q23                45.598498  ...         74.303148              3.983519
+2            3Q23                47.041830  ...         86.000000              4.000000
+3            4Q23                46.922884  ...         92.000000              5.000000
+4            1Q24                46.572982  ...         85.000000              5.000000
+5            2Q24                46.488073  ...         86.000000              4.000000
+6            3Q24                47.367586  ...         91.000000              4.000000
+7            4Q24                47.386866  ...         96.000000              4.000000
 {% endhighlight %}
 
 # More Example Code

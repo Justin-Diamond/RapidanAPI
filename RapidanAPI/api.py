@@ -82,8 +82,23 @@ def eu_gas_balance(api_key):
     else:
         response.raise_for_status()
 
-def refined_products_module(api_key):
-    url = f"{BASE_URL}refined_products_module"
+def refined_products_outlook(api_key):
+    url = f"{BASE_URL}refined_products_outlook"
+    headers = {
+        'x-api-key': api_key
+    }
+    
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        df = pd.DataFrame(data)
+        return df
+    else:
+        response.raise_for_status()
+
+def barrels_at_risk(api_key):
+    url = f"{BASE_URL}barrels_at_risk"
     headers = {
         'x-api-key': api_key
     }

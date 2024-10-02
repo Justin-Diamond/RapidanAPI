@@ -3,7 +3,7 @@
 
 Welcome to RapidanAPI! This Python Package helps Rapidan's clients process API-accessible data and forecasts as conveniently as possible.
 
-RapidanAPI is currently in Version 1.1.1, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
+RapidanAPI is currently in Version 1.1.2, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
 
 # Getting started with RapidanAPI
 The easiest way to install this package is to use the package installer for Python, which enables a "pip" command. The tutorial for using the package installer can be found here: https://packaging.python.org/en/latest/tutorials/installing-packages/
@@ -18,7 +18,8 @@ Once this package is installed, you can access most datasets with a few lines of
 Endpoint : Parameters
 
 global_oil_balance : api_key, balance_date, columns
-refined_products_module : api_key
+refined_products_outlook : api_key
+barrels_at_risk : api_key
 china_risk_tracker : api_key
 energy_calendar : api_key
 us_gas_balance : api_key
@@ -58,7 +59,7 @@ This outputs a table that can be saved as a .csv, .xlsx, or other file:
 {% endhighlight %}
 
 # Other Parameters
-For datasets like the Global Oil Balance, parameters such as “balance_date” and “columns” are included to give you extra control of the data, and allow you to retrieve historical oil balances. In the future, we plan on adding these parameters to other endpoints – such as the refined products module and gas balance endpoints.
+For datasets like the Global Oil Balance, parameters such as “balance_date” and “columns” are included to give you extra control of the data, and allow you to retrieve historical oil balances. In the future, we plan on adding these parameters to other endpoints – such as the refined products outlook and gas balance endpoints.
 
 The “balance_date” parameter is in YYMM format, and includes our historical oil balances from 2401 (January 2024) to present. For example, setting the date parameter as 2401 will pull data from January 2024, and setting it as 2407 will pull data from July 2024. If you want to pull the most recently updated dataset, just set this parameter as balance_date="Current" or balance_date=None.
 
@@ -109,14 +110,15 @@ Here's a script that pulls and prints every dataframe available through RapidanA
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}
-from RapidanAPI import global_oil_balance, china_risk_tracker, refined_products_module, eu_gas_balance, us_gas_balance, energy_calendar
+from RapidanAPI import global_oil_balance, china_risk_tracker, refined_products_outlook, barrels_at_risk, eu_gas_balance, us_gas_balance, energy_calendar
 import pandas as pd
 
 api_key = "YOUR_API_KEY"
 
 # Pull data from each endpoint and store in a DataFrame
 global_oil_balance_df = global_oil_balance(api_key, balance_date="Current", columns="All")
-refined_products_df = refined_products_module(api_key)
+refined_products_df = refined_products_outlook(api_key)
+barrels_at_risk_df = barrels_at_risk_outlook(api_key)
 china_risk_tracker_df = china_risk_tracker(api_key)
 eu_gas_balance_df = eu_gas_balance(api_key)
 us_gas_balance_df = us_gas_balance(api_key)
@@ -124,7 +126,8 @@ energy_calendar_df = energy_calendar(api_key)
 
 # Print each DataFrame with combined text
 print("Global Oil Balance DataFrame:\n", global_oil_balance_df.head(), "\n")
-print("Refined Products Module DataFrame:\n", refined_products_df.head(), "\n")
+print("Refined Products Outlook DataFrame:\n", refined_products_df.head(), "\n")
+print("Refined Products Outlook DataFrame:\n", barrels_at_risk_df.head(), "\n")
 print("China Risk Tracker DataFrame:\n", china_risk_tracker_df.head(), "\n")
 print("EU Gas Balance DataFrame:\n", eu_gas_balance_df.head(), "\n")
 print("US Gas Balance DataFrame:\n", us_gas_balance_df.head(), "\n")
@@ -135,14 +138,15 @@ The following script uses the "openpyxl" package (which can be installed with th
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}
-from RapidanAPI import (global_oil_balance, china_risk_tracker, refined_products_module, eu_gas_balance, us_gas_balance, energy_calendar)
+from RapidanAPI import (global_oil_balance, china_risk_tracker, refined_products_outlook, barrels_at_risk, eu_gas_balance, us_gas_balance, energy_calendar)
 import pandas as pd
 
 api_key = "YOUR_API_KEY"
 
 with pd.ExcelWriter("Rapidan_Data.xlsx", engine="openpyxl") as writer:
     global_oil_balance(api_key, balance_date="Current", columns="All").to_excel(writer, sheet_name="Global_Oil_Balance", index=False)
-    refined_products_module(api_key).to_excel(writer, sheet_name="Refined_Products", index=False)
+    refined_products_outlook(api_key).to_excel(writer, sheet_name="Refined_Products", index=False)
+    barrels_at_risk(api_key).to_excel(writer, sheet_name="Barrels_at_Risk", index=False)
     china_risk_tracker(api_key).to_excel(writer, sheet_name="China_Risk_Tracker", index=False)
     eu_gas_balance(api_key).to_excel(writer, sheet_name="EU_Gas_Balance", index=False)
     us_gas_balance(api_key).to_excel(writer, sheet_name="US_Gas_Balance", index=False)
@@ -161,7 +165,7 @@ import seaborn as sns
 # Your API key
 api_key = "YOUR_API_KEY"
 
-# Pull df from the EU gas balance module and process date column
+# Pull df from the EU gas balance and process date column
 df = eu_gas_balance(api_key)
 date_column = df.columns[0]
 df[date_column] = pd.to_datetime(df[date_column], format="%B-%y", errors="coerce")

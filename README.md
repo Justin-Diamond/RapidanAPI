@@ -27,7 +27,7 @@ eu_gas_balance : api_key
 {% endhighlight %}
 
 # API Keys
-The "api_key" parameter contains your api key, which is used to identify you as a legitimate user and should be kept secret. The default usage plan allows each key to make up to 3000 requests per month. You can reach out to Rapidan at any time to inquire about API key access. Endpoints which only require the API key parameter will always pulls the most current & complete version of the dataset. Here's how you can pull energy calendar data using only the “api_key” parameter:
+The "api_key" parameter contains your api key, which is used to identify you as a legitimate user and should be kept secret. The default usage plan allows each key to make up to 30000 requests per month. You can reach out to Rapidan at any time to inquire about API key access. Endpoints which only require the API key parameter will always pulls the most current & complete version of the dataset. Here's how you can pull energy calendar data using only the “api_key” parameter:
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}

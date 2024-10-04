@@ -145,7 +145,7 @@ api_key = "YOUR_API_KEY"
 
 with pd.ExcelWriter("Rapidan_Data.xlsx", engine="openpyxl") as writer:
     global_oil_balance(api_key, balance_date="Current", columns="All").to_excel(writer, sheet_name="Global_Oil_Balance", index=False)
-    refined_products_outlook(api_key).to_excel(writer, sheet_name="Refined_Products", index=False)
+    refined_products_outlook(api_key).to_excel(writer, sheet_name="Refined_Products_Outlook", index=False)
     barrels_at_risk(api_key).to_excel(writer, sheet_name="Barrels_at_Risk", index=False)
     china_risk_tracker(api_key).to_excel(writer, sheet_name="China_Risk_Tracker", index=False)
     eu_gas_balance(api_key).to_excel(writer, sheet_name="EU_Gas_Balance", index=False)

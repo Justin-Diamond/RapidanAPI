@@ -3,7 +3,7 @@
 
 Welcome to RapidanAPI! This Python Package helps Rapidan's clients process API-accessible data and forecasts as conveniently as possible.
 
-RapidanAPI is currently in Version 1.1.2, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
+RapidanAPI is currently in Version 1.1.3, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
 
 # Getting started with RapidanAPI
 The easiest way to install this package is to use the package installer for Python, which enables a "pip" command. The tutorial for using the package installer can be found here: https://packaging.python.org/en/latest/tutorials/installing-packages/
@@ -17,7 +17,7 @@ Once this package is installed, you can access most datasets with a few lines of
 {% highlight html %}
 Endpoint : Parameters
 
-global_oil_balance : api_key, balance_date, columns
+global_oil_balance : api_key, balance_date, columns, frequency
 refined_products_outlook : api_key
 barrels_at_risk : api_key
 china_risk_tracker : api_key
@@ -59,11 +59,15 @@ This outputs a table that can be saved as a .csv, .xlsx, or other file:
 {% endhighlight %}
 
 # Other Parameters
-For datasets like the Global Oil Balance, parameters such as “balance_date” and “columns” are included to give you extra control of the data, and allow you to retrieve historical oil balances. In the future, we plan on adding these parameters to other endpoints – such as the refined products outlook and gas balance endpoints.
+For datasets like the Global Oil Balance, parameters such as “balance_date”, “columns”, and "frequency" are included to give you extra control of the data, and allow you to retrieve historical oil balances. In the future, we plan on adding these parameters to other endpoints – such as the refined products outlook and gas balance endpoints.
 
 The “balance_date” parameter is in YYMM format, and includes our historical oil balances from 2401 (January 2024) to present. For example, setting the date parameter as 2401 will pull data from January 2024, and setting it as 2407 will pull data from July 2024. If you want to pull the most recently updated dataset, just set this parameter as balance_date="Current" or balance_date=None.
 
-The “columns” parameter lets you pull specific columns of data. If you want to pull the entire dataset, just set this parameter as columns="All" or columns=None. But if you want to pull specific columns, just enter one or more of the column codes listed at the bottom of this page as comma separated values. For example, columns=“OECD_CONS, OECD_SUPP” will pull OECD consumption and OECD supply. Here’s how you can pull all of the columns from our June 2023 global oil balance:
+The “columns” parameter lets you pull specific columns of data. If you want to pull the entire dataset, just set this parameter as columns="All" or columns=None. But if you want to pull specific columns, just enter one or more of the column codes listed at the bottom of this page as comma separated values. For example, columns=“OECD_CONS, OECD_SUPP” will pull OECD consumption and OECD supply. 
+
+The “frequency” parameter lets you pull either monthly or quarterly frequency data. Please note that all pre-2410 balances contain ONLY quarterly frequency data. To pull monthly/quarterly frequency data, just set this parameter as frequency="Monthly" or frequency="Quarterly". If this parameter is set as None or anything else, both monthly and quartertly data will be pulled. 
+
+Here’s an example of how you can pull all columns of our current global oil balance at a monthly frequency:
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}
@@ -71,11 +75,12 @@ from RapidanAPI import global_oil_balance
 
 # API key, balance ID, and columns are passed as parameters
 api_key = "YOUR_API_KEY"
-balance_id = "2408"
+balance_id = "Current"
 columns = "All"
+frequency = "Monthly"
 
 # Get the data
-df = global_oil_balance(api_key, balance_id, columns)
+df = global_oil_balance(api_key, balance_id, columns, frequency)
 
 # df is a pandas DataFrame containing the data
 print(df)
@@ -88,19 +93,20 @@ Which outputs a dataframe & .csv that looks like this:
 
 {% seo %} {% include head-custom.html %}
 {% highlight html %}
-   Quarter (2408)  OECD Consumption (mb/d)  ...  WTI Forecast ($)  Brent-WTI Spread ($)
-0            1Q23                     45.3  ...              76.1                   6.0
-1            2Q23                     45.8  ...              73.6                   4.2
-2            3Q23                     46.2  ...              82.1                   3.8
-3            4Q23                     46.3  ...              78.4                   4.4
-4            1Q24                     45.1  ...              76.9                   4.9
-5            2Q24                     46.1  ...              80.6                   4.4
-6            3Q24                     46.5  ...              77.3                   3.5
-7            4Q24                     46.6  ...              79.3                   4.0
-8            1Q25                     45.8  ...              80.7                   4.0
-9            2Q25                     45.9  ...              80.1                   4.0
-10           3Q25                     46.7  ...              77.7                   4.0
-11           4Q25                     47.0  ...              75.5                   4.0
+   Month (Updated 2410) OECD Consumption (mb/d)  ...
+0                Jan-23                    44.1  ...
+1                Feb-23                    46.2  ...
+2                Mar-23                    46.1  ...
+3                Apr-23                    44.7  ...
+4                May-23                    45.9  ...
+5                Jun-23                    46.6  ...
+6                Jul-23                    45.9  ...
+7                Aug-23                    46.5  ...
+8                Sep-23                    46.1  ...
+9                Oct-23                    46.3  ...
+10               Nov-23                    46.6  ...
+11               Dec-23                    46.2  ...
+...                 ...                     ...  ...
 {% endhighlight %}
 
 # More Example Code
@@ -116,7 +122,7 @@ import pandas as pd
 api_key = "YOUR_API_KEY"
 
 # Pull data from each endpoint and store in a DataFrame
-global_oil_balance_df = global_oil_balance(api_key, balance_date="Current", columns="All")
+global_oil_balance_df = global_oil_balance(api_key, balance_date="Current", columns="All", frequency="Monthly")
 refined_products_df = refined_products_outlook(api_key)
 barrels_at_risk_df = barrels_at_risk(api_key)
 china_risk_tracker_df = china_risk_tracker(api_key)
@@ -144,8 +150,8 @@ import pandas as pd
 api_key = "YOUR_API_KEY"
 
 with pd.ExcelWriter("Rapidan_Data.xlsx", engine="openpyxl") as writer:
-    global_oil_balance(api_key, balance_date="Current", columns="All").to_excel(writer, sheet_name="Global_Oil_Balance", index=False)
-    refined_products_outlook(api_key).to_excel(writer, sheet_name="Refined_Products", index=False)
+    global_oil_balance(api_key, balance_date="Current", columns="All", frequency="Monthly").to_excel(writer, sheet_name="Global_Oil_Balance", index=False)
+    refined_products_outlook(api_key).to_excel(writer, sheet_name="Refined_Products_Outlook", index=False)
     barrels_at_risk(api_key).to_excel(writer, sheet_name="Barrels_at_Risk", index=False)
     china_risk_tracker(api_key).to_excel(writer, sheet_name="China_Risk_Tracker", index=False)
     eu_gas_balance(api_key).to_excel(writer, sheet_name="EU_Gas_Balance", index=False)

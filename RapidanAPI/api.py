@@ -3,14 +3,15 @@ import pandas as pd
 
 BASE_URL = "https://iue4h9npc6.execute-api.us-east-1.amazonaws.com/RapidanAPI/"
 
-def global_oil_balance(api_key, balance_date, columns):
+def global_oil_balance(api_key, balance_date, columns, frequency):
     url = f"{BASE_URL}global_oil_balance"
     headers = {
         'x-api-key': api_key
     }
     params = {
         'balance_date': balance_date,
-        'columns': columns
+        'columns': columns,
+        'frequency': frequency
     }
     
     response = requests.get(url, headers=headers, params=params)

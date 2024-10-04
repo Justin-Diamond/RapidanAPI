@@ -118,7 +118,7 @@ api_key = "YOUR_API_KEY"
 # Pull data from each endpoint and store in a DataFrame
 global_oil_balance_df = global_oil_balance(api_key, balance_date="Current", columns="All")
 refined_products_df = refined_products_outlook(api_key)
-barrels_at_risk_df = barrels_at_risk_outlook(api_key)
+barrels_at_risk_df = barrels_at_risk(api_key)
 china_risk_tracker_df = china_risk_tracker(api_key)
 eu_gas_balance_df = eu_gas_balance(api_key)
 us_gas_balance_df = us_gas_balance(api_key)
@@ -127,7 +127,7 @@ energy_calendar_df = energy_calendar(api_key)
 # Print each DataFrame with combined text
 print("Global Oil Balance DataFrame:\n", global_oil_balance_df.head(), "\n")
 print("Refined Products Outlook DataFrame:\n", refined_products_df.head(), "\n")
-print("Refined Products Outlook DataFrame:\n", barrels_at_risk_df.head(), "\n")
+print("Barrels at Risk DataFrame:\n", barrels_at_risk_df.head(), "\n")
 print("China Risk Tracker DataFrame:\n", china_risk_tracker_df.head(), "\n")
 print("EU Gas Balance DataFrame:\n", eu_gas_balance_df.head(), "\n")
 print("US Gas Balance DataFrame:\n", us_gas_balance_df.head(), "\n")

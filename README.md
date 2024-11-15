@@ -73,7 +73,7 @@ Here’s an example of how you can pull all columns of our current global oil ba
 {% highlight python %}
 from RapidanAPI import global_oil_balance
 
-# API key, balance ID, and columns are passed as parameters
+# API key, balance ID, columns, and frequency are passed as parameters
 api_key = "YOUR_API_KEY"
 balance_id = "Current"
 columns = "All"

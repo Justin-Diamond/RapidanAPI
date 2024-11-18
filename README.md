@@ -3,7 +3,7 @@
 
 Welcome to RapidanAPI! This Python Package helps Rapidan's clients process API-accessible data and forecasts as conveniently as possible.
 
-RapidanAPI is currently in Version 1.1.3, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out.
+RapidanAPI is currently in Version 1.1.3, but we’re already working to expand the number and extensiveness of datasets available through RapidanAPI. If you have any questions about RapidanAPI or need help with its implementation, don't hesitate to reach out to us at info@rapidanenergy.com.
 
 # Getting started with RapidanAPI
 The easiest way to install this package is to use the package installer for Python, which enables a "pip" command. The tutorial for using the package installer can be found here: https://packaging.python.org/en/latest/tutorials/installing-packages/
@@ -27,7 +27,7 @@ eu_gas_balance : api_key
 {% endhighlight %}
 
 # API Keys
-The "api_key" parameter contains your api key, which is used to identify you as a legitimate user and should be kept secret. The default usage plan allows each key to make up to 30000 requests per month. You can reach out to Rapidan at any time to inquire about API key access. Endpoints which only require the API key parameter will always pulls the most current & complete version of the dataset. Here's how you can pull energy calendar data using only the “api_key” parameter:
+The "api_key" parameter contains your api key, which is used to identify you as a legitimate user and should be kept secret. The default usage plan allows each key to make up to 30000 requests per month. You can reach out to Rapidan at any time to inquire about API key access. Endpoints which only require the API key parameter will always pull the most current & complete version of the dataset. Here's how you can pull energy calendar data using only the “api_key” parameter:
 
 {% seo %} {% include head-custom.html %}
 {% highlight python %}

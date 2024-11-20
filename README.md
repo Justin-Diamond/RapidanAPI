@@ -209,7 +209,7 @@ This outputs the following chart as a .png file:
 ![Rapidan_EU_Gas_Balance](https://github.com/user-attachments/assets/5045e14d-cde9-41d8-a5e1-7ab27d549f64)
 
 # Global Oil Balance Column Codes
-Here is the list of unique IDs which correspond to different columns of data in our global oil balance. The code:
+Here is the list of unique IDs which correspond to different columns of data in our global oil balance. Please note that over time, some columns may be added or removed:
 
 <div style="font-size: 8px;">
 {% seo %} {% include head-custom.html %}
@@ -227,17 +227,22 @@ Here is the list of unique IDs which correspond to different columns of data in 
     "BRA_CONS": "Brazil Consumption (mb/d)",
     "RUS_CONS": "Russia Consumption (mb/d)",
     "OTH_NONOECD_CONS": "Other Non-OECD Consumption (mb/d)",
-    "TOT_CONS": "Total World Consumption",
+    "TOT_CONS": "Total World Consumption (mb/d)",
     "OECD_SUPP": "OECD Supply (mb/d)",
-    "USA_TL_SUPP": "U.S. Total Liquids Supply (mb/d)",
+    "USA_TL_SUPP": "US Total Liquids Supply (mb/d)",
     "USA_CR_SUPP": "Crude Supply (mb/d)",
     "USA_LOW48_CR_SUPP": "Lower 48 Supply (mb/d)",
-    "USA_GOM_CR_SUPP": "GOM Supply (mb/d)",
+    "USA_GOM_CR_SUPP": "Gulf of Mexico Supply (mb/d)",
     "USA_AL_CR_SUPP": "Alaska Supply (mb/d)",
     "USA_NGL_SUPP": "NGLs Supply (mb/d)",
     "USA_OL_SUPP": "Other US Liquids Supply (mb/d)",
-    "MEX_SUPP": "Mexico Supply (mb/d)",
+    "UK_SUPP": "United Kingdom Supply (mb/d)",
     "CAN_SUPP": "Canada Supply (mb/d)",
+    "NOR_SUPP": "Norway Supply (mb/d)",
+    "ARG_SUPP": "Argentina Supply (mb/d)",
+    "GUY_SUPP": "Guyana Supply (mb/d)",
+    "QAT_SUPP": "Qatar Supply (mb/d)",
+    "KAZ_SUPP": "Kazakhstan Supply (mb/d)",
     "OTH_OECD_SUPP": "Other OECD Supply (mb/d)",
     "NONOECD_SUPP": "Non-OECD Supply (mb/d)",
     "BRA_SUPP": "Brazil Supply (mb/d)",
@@ -246,13 +251,22 @@ Here is the list of unique IDs which correspond to different columns of data in 
     "RUS_CR_SUPP": "Russia Crude Supply (mb/d)",
     "OTH_NONOECD_SUPP": "Other Non-OECD Supply (mb/d)",
     "NONOPEC_SUPP": "Non-OPEC Supply (mb/d)",
-    "OPEC_SUPP": "OPEC Supply (mb/d)",
-    "OPEC_CR_SUPP": "Crude Oil Portion Supply (mb/d)",
-    "OPEC_OL_SUPP": "Other Liquids Supply (mb/d)",
-    "GLOBAL_BIOFUELS_SUPP": "Global Biofuels Supply",
-    "GLOBAL_PROC_GAINS": "Global Processing Gains",
+    "OTH_NONOPEC_SUPP": "Other Non-OPEC Supply (mb/d)",
+    "NONOPEC_PLUS_SUPP": "Non-OPEC+ Supply (mb/d)",
+    "OTH_NONOPEC_PLUS_SUPP": "Other Non-OPEC+ Supply (mb/d)",
+    "OPEC_SUPP": "OPEC Total Supply (mb/d)",
+    "OPEC_CR_SUPP": "OPEC Crude Supply (mb/d)",
+    "OPEC_OL_SUPP": "OPEC Other Liquids Supply (mb/d)",
+    "OPEC_DOC_SUPP": "Non-OPEC DoC Total Supply (mb/d)",
+    "OPEC_DOC_CR_SUPP": "Non-OPEC DoC Crude Supply (mb/d)",
+    "OPEC_DOC_OL_SUPP": "Non-OPEC DoC Other Liquids Supply (mb/d)",
+    "OPEC_PLUS_CR_SUPP": "OPEC+ Crude Supply (mb/d)",
+    "OPEC_PLUS_OL_SUPP": "OPEC+ Other Liquids Supply (mb/d)",
+    "GLOBAL_BIOFUELS_SUPP": "Global Biofuels Supply (mb/d)",
+    "GLOBAL_PROC_GAINS": "Global Processing Gains (mb/d)",
     "TOT_SUPP": "Total World Supply (mb/d)",
     "SURPLUS": "Implied Surplus (mb/d)",
+    // All values below are only provided quarterly //
     "OECD_IND_STK_CHNG": "OECD Industry Stock Change (mb/d)",
     "USA_IND_STK_CHNG": "US Industry Stocks Change (Ex. SPR) (mb/d)",
     "OTH_OECD_IND_STK_CHNG": "Other OECD Industry Stocks Change (mb/d)",
@@ -266,7 +280,6 @@ Here is the list of unique IDs which correspond to different columns of data in 
     "WTI_PRICE": "WTI Forecast ($)",
     "BRENT_WTI_SPREAD": "Brent-WTI Spread ($)"
 }
-
 {% endhighlight %}
 </div>
 
